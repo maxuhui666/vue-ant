@@ -1,6 +1,6 @@
 import axios from 'axios';
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = '/form_manage';
+axios.defaults.baseURL = '/ccecc';
 const postMethod = new Map();
 postMethod.set(1, 'application/json; charset=utf-8');
 postMethod.set(2, 'application/x-www-form-urlencoded; charset=utf-8');

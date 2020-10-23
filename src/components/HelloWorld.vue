@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <h1 v-if="show">{{ msg }}</h1>
-    <a-button v-on:click="switchMsg('22')">点击隐藏</a-button>
+    <a-button v-on:click="getData">发送请求</a-button>
   </div>
 </template>
 
@@ -9,15 +8,14 @@
 export default {
   name: 'HelloWorld',
   data: function() {
-    return {
-      msg: 'hello',
-      show: true,
-    };
+    return {};
   },
+  inject: ['http', 'api'],
   methods: {
-    switchMsg: function(ss) {
-      this.$message.success(ss);
-      this.show=!this.show;
+    getData: function() {
+      this.http.post(this.api.project.list, {pageNumber: 1}).then((response)=>{
+        console.log(response.data);
+      });
     },
   },
 };
