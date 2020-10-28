@@ -24,9 +24,7 @@ axios.interceptors.response.use(
      * 请求成功后执行的代码
      * 自定义全局的拦截处理
      */
-      if (response.data.error !== null) {
-        message.error(response.data.error.message);
-      }
+      console.log(response.data);
       return response.data;
     },
     (error) => {
@@ -55,7 +53,8 @@ axios.interceptors.response.use(
             message.error('网络超时！');
             break;
           default:
-            return message.error(error);
+            message.error(error);
+            return;
         }
       } else {
         message.error('连接到服务器失败！');

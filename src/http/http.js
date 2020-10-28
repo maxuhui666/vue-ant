@@ -1,9 +1,10 @@
 import axios from 'axios';
+
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = '/ccecc';
-const postMethod = new Map();
-postMethod.set(1, 'application/json; charset=utf-8');
-postMethod.set(2, 'application/x-www-form-urlencoded; charset=utf-8');
+axios.defaults.baseURL = '/';
+const requestMethod = new Map();
+requestMethod.set(1, 'application/json; charset=utf-8');
+requestMethod.set(2, 'application/x-www-form-urlencoded; charset=utf-8');
 
 export default {
   get(url, params) {
@@ -18,7 +19,7 @@ export default {
     const options = {};
     options.headers = {
       headers: {
-        'Content-Type': postMethod.get(method),
+        'Content-Type': requestMethod.get(method),
       },
     };
     return axios.post(url, data, options);

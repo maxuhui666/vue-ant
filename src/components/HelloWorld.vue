@@ -1,10 +1,13 @@
 <template>
   <div class="hello">
-    <a-button v-on:click="getData" type="primary">发送请求</a-button>
-    <a-button v-on:click="cleanData" type="danger">清空数据</a-button>
-    <p v-for="(item,index) of this.list" v-bind:key="index">
-      {{ item.projectName }}
-    </p>
+    <a-row>
+      <a-col><p></p></a-col>
+    </a-row>
+    <a-row>
+      <a-col>
+        <a-rate v-model:value="value" allow-half />
+      </a-col>
+    </a-row>
   </div>
 </template>
 
@@ -13,24 +16,10 @@ export default {
   name: 'HelloWorld',
   data: function() {
     return {
-      list: [],
+      value: 2.5,
     };
   },
-  setup: function() {
-  },
-  inject: ['http', 'api'],
-  methods: {
-    getData: function() {
-      this.http.post(this.api.project.list,
-          {pageNumber: 1},
-      ).then((response) => {
-        this.list = response.data.list;
-      });
-    },
-    cleanData: function() {
-      this.list=[];
-    },
-  },
+  methods: {},
 };
 </script>
 
